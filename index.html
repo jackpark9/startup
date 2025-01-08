@@ -6,78 +6,227 @@
     <title>SubletSphere | Vancouver Rental Solutions</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            color: #0066ff;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav ul li {
+            margin-left: 15px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        #hero {
+            position: relative;
+            height: 50vh;
+            background: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 80%;
+            height: 50%;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0 0 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin: 0 0 20px;
+            font-weight: bold;
+        }
+
+        .cta-search {
+            display: flex;
+            justify-content: center;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-search input, .cta-search select {
+            padding: 10px;
+            margin: 0 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .cta-search button {
+            background: #0066ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .cta-search button:hover {
+            background: #0056cc;
+        }
+
+        .listing {
+            position: absolute;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+            font-weight: bold;
+        }
+
+        .listing h3 {
+            margin: 0;
+        }
+
+        .listing button {
+            background: #0066ff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .listing button:hover {
+            background: #0056cc;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>SubletSphere</h1>
-            <nav>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+        <h1>SubletSphere</h1>
+        <nav>
+            <ul>
+                <li><a href="#">List your apartment</a></li>
+                <li><a href="#">How It Works</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Log In</a></li>
+            </ul>
+        </nav>
     </header>
 
     <section id="hero">
+        <div id="map"></div>
         <div class="hero-content">
-            <h2>Your Partner for Sublet Success in Vancouver</h2>
-            <p>Helping you navigate rental disputes and sublet management with ease and transparency.</p>
-            <a href="#services" class="cta-button">Get Started</a>
-        </div>
-    </section>
-
-    <section id="about" class="section">
-        <div class="container">
-            <h2>About SubletSphere</h2>
-            <p>At SubletSphere, we specialize in assisting Vancouver residents with rental disputes, subletting solutions, and tenant rights advocacy. Our mission is to make renting and subletting hassle-free for everyone.</p>
-        </div>
-    </section>
-
-    <section id="services" class="section">
-        <div class="container">
-            <h2>Our Services</h2>
-            <div class="service">
-                <h3>Sublet Management</h3>
-                <p>We provide tailored solutions for seamless subletting, ensuring compliance with Vancouver rental laws.</p>
-            </div>
-            <div class="service">
-                <h3>Rental Dispute Resolution</h3>
-                <p>Our experts mediate and resolve disputes between tenants and landlords.</p>
-            </div>
-            <div class="service">
-                <h3>Tenant Rights Guidance</h3>
-                <p>Know your rights as a tenant in Vancouver. We offer consultations to empower you with the knowledge to protect yourself.</p>
+            <h2>Find your place.</h2>
+            <p>Explore Vancouver rentals tailored for you.</p>
+            <div class="cta-search">
+                <input type="text" placeholder="Search by neighborhood">
+                <input type="date" placeholder="Check in">
+                <input type="date" placeholder="Check out">
+                <select>
+                    <option value="1">1 Guest</option>
+                    <option value="2">2 Guests</option>
+                    <option value="3">3 Guests</option>
+                    <option value="4">4 Guests</option>
+                </select>
+                <button>Search</button>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <p>Have questions or need help? Get in touch with us!</p>
-            <form action="#" method="post" class="contact-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoiamFja3Bhcms5IiwiYSI6ImNtNW9lZHo3bjA3eWgybG9rdW1lemp6cHkifQ.9CVW74fhbsMaonyG81t2XQ';
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [-123.1207, 49.2827], // Vancouver coordinates
+            zoom: 12
+        });
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+        const listings = [
+            {
+                coordinates: [-123.116226, 49.246292],
+                title: "Apartment 1",
+                price: "$2000/month",
+                description: "Available Dec 10 - Dec 20",
+            },
+            {
+                coordinates: [-123.121487, 49.283760],
+                title: "Apartment 2",
+                price: "$1800/month",
+                description: "Available Dec 5 - Dec 25",
+            }
+        ];
 
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
+        listings.forEach(listing => {
+            const marker = new mapboxgl.Marker()
+                .setLngLat(listing.coordinates)
+                .addTo(map);
 
-                <button type="submit" class="cta-button">Send Message</button>
-            </form>
-        </div>
-    </section>
+            const popup = new mapboxgl.Popup({ offset: 25 })
+                .setHTML(`
+                    <div class="listing">
+                        <h3>${listing.title}</h3>
+                        <p>${listing.price}</p>
+                        <p>${listing.description}</p>
+                        <button>View Details</button>
+                    </div>
+                `);
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 SubletSphere. All Rights Reserved.</p>
-        </div>
-    </footer>
+            marker.setPopup(popup);
+        });
+    </script>
 </body>
 </html>
