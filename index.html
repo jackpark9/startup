@@ -1,82 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vancouver Sublets</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SubletSphere | Vancouver Rental Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="header">
-    <div class="logo">
-      <h1>Vancouver Sublets</h1>
-    </div>
-    <nav class="nav">
-      <ul>
-        <li><a href="#stays">Stays</a></li>
-        <li><a href="#experiences">Experiences</a></li>
-        <li><a href="#map">Show Map</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <div class="container">
+            <h1>SubletSphere</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <!-- Search Section -->
-  <section class="search-section">
-    <input type="text" placeholder="Search destinations" class="search-input">
-    <input type="text" placeholder="Check in" class="search-input">
-    <input type="text" placeholder="Check out" class="search-input">
-    <input type="text" placeholder="Add guests" class="search-input">
-    <button class="search-button">Search</button>
-  </section>
+    <section id="hero">
+        <div class="hero-content">
+            <h2>Your Partner for Sublet Success in Vancouver</h2>
+            <p>Helping you navigate rental disputes and sublet management with ease and transparency.</p>
+            <a href="#services" class="cta-button">Get Started</a>
+        </div>
+    </section>
 
-  <!-- Categories Section -->
-  <section class="categories">
-    <div class="category">
-      <img src="https://via.placeholder.com/50" alt="Cabins">
-      <p>Cabins</p>
-    </div>
-    <div class="category">
-      <img src="https://via.placeholder.com/50" alt="Lakefront">
-      <p>Lakefront</p>
-    </div>
-    <div class="category">
-      <img src="https://via.placeholder.com/50" alt="Tree Houses">
-      <p>Tree Houses</p>
-    </div>
-    <div class="category">
-      <img src="https://via.placeholder.com/50" alt="Amazing Pools">
-      <p>Amazing Pools</p>
-    </div>
-  </section>
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About SubletSphere</h2>
+            <p>At SubletSphere, we specialize in assisting Vancouver residents with rental disputes, subletting solutions, and tenant rights advocacy. Our mission is to make renting and subletting hassle-free for everyone.</p>
+        </div>
+    </section>
 
-  <!-- Listings Section -->
-  <section id="stays" class="listings">
-    <h2>Available Listings</h2>
-    <div class="listing-grid">
-      <div class="listing-card">
-        <img src="https://via.placeholder.com/300x200" alt="Listing 1">
-        <p class="location">Downtown Vancouver</p>
-        <p class="price">$1,800/month</p>
-        <p class="rating">★ 4.9</p>
-      </div>
-      <div class="listing-card">
-        <img src="https://via.placeholder.com/300x200" alt="Listing 2">
-        <p class="location">Kitsilano</p>
-        <p class="price">$2,400/month</p>
-        <p class="rating">★ 4.8</p>
-      </div>
-      <div class="listing-card">
-        <img src="https://via.placeholder.com/300x200" alt="Listing 3">
-        <p class="location">Burnaby</p>
-        <p class="price">$1,500/month</p>
-        <p class="rating">★ 4.7</p>
-      </div>
-    </div>
-  </section>
+    <section id="services" class="section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service">
+                <h3>Sublet Management</h3>
+                <p>We provide tailored solutions for seamless subletting, ensuring compliance with Vancouver rental laws.</p>
+            </div>
+            <div class="service">
+                <h3>Rental Dispute Resolution</h3>
+                <p>Our experts mediate and resolve disputes between tenants and landlords.</p>
+            </div>
+            <div class="service">
+                <h3>Tenant Rights Guidance</h3>
+                <p>Know your rights as a tenant in Vancouver. We offer consultations to empower you with the knowledge to protect yourself.</p>
+            </div>
+        </div>
+    </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>© 2025 Vancouver Sublets. All rights reserved.</p>
-  </footer>
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>Have questions or need help? Get in touch with us!</p>
+            <form action="#" method="post" class="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 SubletSphere. All Rights Reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
