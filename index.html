@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -10,7 +10,7 @@
 <body>
   <header>
     <div class="container">
-      <h1>Vancouver Sublets</h1>
+      <h1 class="logo">Vancouver Sublets</h1>
       <nav>
         <ul>
           <li><a href="#listings">Listings</a></li>
@@ -22,35 +22,47 @@
   </header>
 
   <main>
+    <!-- Hero Section -->
     <section class="hero">
-      <h2>Find Your Perfect Sublet in Vancouver</h2>
-      <p>Explore affordable and convenient sublet options for your stay in Vancouver.</p>
-    </section>
-
-    <section id="map-section">
-      <h2>Explore Listings on the Map</h2>
-      <div id="map"></div>
-    </section>
-
-    <section id="listings">
-      <h2>Available Listings</h2>
-      <div class="listing">
-        <h3>1-Bedroom Apartment in Downtown</h3>
-        <p>$1,800/month | Available: Feb 1, 2025</p>
-        <button onclick="focusOnLocation(49.2827, -123.1207)">View on Map</button>
-      </div>
-      <div class="listing">
-        <h3>2-Bedroom in Kitsilano</h3>
-        <p>$2,400/month | Available: Mar 1, 2025</p>
-        <button onclick="focusOnLocation(49.2681, -123.1689)">View on Map</button>
+      <h2>Find Your Perfect Stay in Vancouver</h2>
+      <p>Discover affordable and flexible sublet options for your needs.</p>
+      <div class="search-bar">
+        <input type="text" placeholder="Search by location or keyword" id="search-input">
+        <button onclick="searchListings()">Search</button>
       </div>
     </section>
 
+    <!-- Listings and Map Section -->
+    <section id="listings-map-section">
+      <div class="listings">
+        <h2>Available Listings</h2>
+        <div class="listing-card">
+          <img src="https://via.placeholder.com/300x200" alt="Downtown Apartment">
+          <h3>1-Bedroom Apartment in Downtown</h3>
+          <p>$1,800/month | Available: Feb 1, 2025</p>
+          <button onclick="focusOnLocation(49.2827, -123.1207)">View on Map</button>
+        </div>
+        <div class="listing-card">
+          <img src="https://via.placeholder.com/300x200" alt="Kitsilano Apartment">
+          <h3>2-Bedroom in Kitsilano</h3>
+          <p>$2,400/month | Available: Mar 1, 2025</p>
+          <button onclick="focusOnLocation(49.2681, -123.1689)">View on Map</button>
+        </div>
+        <!-- Add more listing cards as needed -->
+      </div>
+      <div class="map-container">
+        <h2>Map View</h2>
+        <div id="map"></div>
+      </div>
+    </section>
+
+    <!-- About Section -->
     <section id="about">
       <h2>About Us</h2>
-      <p>We connect subletters with renters in Vancouver, ensuring a seamless experience for both parties.</p>
+      <p>We make it easy to find and rent sublets in Vancouver, connecting tenants with trusted subletters.</p>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact">
       <h2>Contact Us</h2>
       <form>
