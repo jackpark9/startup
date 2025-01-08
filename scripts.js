@@ -5,15 +5,14 @@ let markers = [];
 function initMap() {
   const vancouver = { lat: 49.2827, lng: -123.1207 }; // Default center
 
-  // Create map centered on Vancouver
   map = new google.maps.Map(document.getElementById("map"), {
     zoom: 12,
     center: vancouver,
   });
 
   // Add sample markers
-  addMarker({ lat: 49.2827, lng: -123.1207 }, "1-Bedroom Apartment in Downtown");
-  addMarker({ lat: 49.2681, lng: -123.1689 }, "2-Bedroom in Kitsilano");
+  addMarker({ lat: 49.2827, lng: -123.1207 }, "Downtown Apartment");
+  addMarker({ lat: 49.2681, lng: -123.1689 }, "Kitsilano Apartment");
 }
 
 function addMarker(position, title) {
@@ -30,5 +29,10 @@ function focusOnLocation(lat, lng) {
   map.setCenter({ lat, lng });
 }
 
-// Load map after page load
+function searchListings() {
+  const query = document.getElementById("search-input").value.toLowerCase();
+  alert(`Search feature is not implemented yet. Query: ${query}`);
+}
+
+// Load map on page load
 window.onload = initMap;
