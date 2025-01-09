@@ -14,6 +14,7 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
+            background: #f9f9f9;
         }
 
         header {
@@ -50,106 +51,102 @@
         }
 
         #hero {
-            position: relative;
-            height: 50vh;
-            background: #f5f5f5;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .map-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background: #f0f0f0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .map-header .window-controls {
+            display: flex;
+            gap: 5px;
+        }
+
+        .map-header .window-controls span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .map-header .window-controls .minimize {
+            background: #ffc107;
+        }
+
+        .map-header .window-controls .fullscreen {
+            background: #28a745;
+        }
+
+        .map-header .window-controls .close {
+            background: #dc3545;
+        }
+
+        .map-tabs {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .map-tab {
+            flex: 1;
+            margin: 0 5px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: white;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+            font-size: 14px;
+            font-weight: bold;
+            text-align: left;
+            cursor: text;
+        }
+
+        .map-tab input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 14px;
+            font-weight: bold;
+            color: black;
         }
 
         #map {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 80%;
-            height: 50%;
-            margin: 0 auto;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 60vh;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            color: white;
-        }
-
-        .hero-content h2 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin: 0 0 10px;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin: 0 0 20px;
-            font-weight: bold;
-        }
-
-        .cta-search {
-            display: flex;
-            justify-content: center;
-            background: white;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-search input, .cta-search select {
-            padding: 10px;
-            margin: 0 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            flex: 1;
-            font-weight: bold;
-        }
-
-        .cta-search button {
-            background: #0066ff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .cta-search button:hover {
-            background: #0056cc;
-        }
-
-        .listing {
-            position: absolute;
-            background: white;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            margin: 10px;
-            font-weight: bold;
-        }
-
-        .listing h3 {
-            margin: 0;
-        }
-
-        .listing button {
-            background: #0066ff;
-            color: white;
-            border: none;
+        .bubble {
+            display: inline-block;
             padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            font-size: 14px;
             font-weight: bold;
-        }
-
-        .listing button:hover {
-            background: #0056cc;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            color: #333;
+            text-align: center;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -167,22 +164,20 @@
     </header>
 
     <section id="hero">
-        <div id="map"></div>
-        <div class="hero-content">
-            <h2>Find your place.</h2>
-            <p>Explore Vancouver rentals tailored for you.</p>
-            <div class="cta-search">
-                <input type="text" placeholder="Search by neighborhood">
-                <input type="date" placeholder="Check in">
-                <input type="date" placeholder="Check out">
-                <select>
-                    <option value="1">1 Guest</option>
-                    <option value="2">2 Guests</option>
-                    <option value="3">3 Guests</option>
-                    <option value="4">4 Guests</option>
-                </select>
-                <button>Search</button>
+        <div class="map-container">
+            <div class="map-header">
+                <div class="window-controls">
+                    <span class="minimize"></span>
+                    <span class="fullscreen"></span>
+                    <span class="close"></span>
+                </div>
+                <div class="map-tabs">
+                    <div class="map-tab">
+                        <input type="text" placeholder="Search for a sphere">
+                    </div>
+                </div>
             </div>
+            <div id="map"></div>
         </div>
     </section>
 
@@ -198,34 +193,32 @@
         const listings = [
             {
                 coordinates: [-123.116226, 49.246292],
-                title: "Apartment 1",
                 price: "$2000/month",
-                description: "Available Dec 10 - Dec 20",
+                detailsUrl: "#details1"
             },
             {
                 coordinates: [-123.121487, 49.283760],
-                title: "Apartment 2",
                 price: "$1800/month",
-                description: "Available Dec 5 - Dec 25",
+                detailsUrl: "#details2"
+            },
+            {
+                coordinates: [-123.03553498503831, 49.249016513418916],
+                price: "$2500/month",
+                detailsUrl: "https://www.google.com/maps/place/3239+E+24th+Ave,+Vancouver,+BC+V5R+1G1/@49.2493437,-123.0388539,260m/data=!3m1!1e3!4m6!3m5!1s0x548676c6d84ac2ed:0x38ea162ae20bc097!8m2!3d49.2490001!4d-123.0355371!16s%2Fg%2F11cppnb73v?entry=ttu&g_ep=EgoyMDI1MDEwNi4xIKXMDSoASAFQAw%3D%3D"
             }
         ];
 
         listings.forEach(listing => {
-            const marker = new mapboxgl.Marker()
+            const el = document.createElement('button');
+            el.className = 'bubble';
+            el.innerText = listing.price;
+            el.onclick = () => {
+                window.location.href = listing.detailsUrl;
+            };
+
+            new mapboxgl.Marker({ element: el, anchor: 'center' })
                 .setLngLat(listing.coordinates)
                 .addTo(map);
-
-            const popup = new mapboxgl.Popup({ offset: 25 })
-                .setHTML(`
-                    <div class="listing">
-                        <h3>${listing.title}</h3>
-                        <p>${listing.price}</p>
-                        <p>${listing.description}</p>
-                        <button>View Details</button>
-                    </div>
-                `);
-
-            marker.setPopup(popup);
         });
     </script>
 </body>
