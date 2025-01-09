@@ -148,6 +148,34 @@
             text-align: center;
             cursor: pointer;
         }
+
+        .popup-content {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .popup-content img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .popup-content h3 {
+            margin: 0 0 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .popup-content p {
+            margin: 0;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -194,17 +222,20 @@
             {
                 coordinates: [-123.116226, 49.246292],
                 price: "$2000/month",
-                detailsUrl: "#details1"
+                description: "Large Private Room in Vancouver",
+                image: "https://via.placeholder.com/300"
             },
             {
                 coordinates: [-123.121487, 49.283760],
                 price: "$1800/month",
-                detailsUrl: "#details2"
+                description: "Modern Apartment Downtown",
+                image: "https://via.placeholder.com/300"
             },
             {
                 coordinates: [-123.03553498503831, 49.249016513418916],
                 price: "$2500/month",
-                detailsUrl: "https://www.google.com/maps/place/3239+E+24th+Ave,+Vancouver,+BC+V5R+1G1/@49.2493437,-123.0388539,260m/data=!3m1!1e3!4m6!3m5!1s0x548676c6d84ac2ed:0x38ea162ae20bc097!8m2!3d49.2490001!4d-123.0355371!16s%2Fg%2F11cppnb73v?entry=ttu&g_ep=EgoyMDI1MDEwNi4xIKXMDSoASAFQAw%3D%3D"
+                description: "Cozy Studio in East Vancouver",
+                image: "https://via.placeholder.com/300"
             }
         ];
 
@@ -212,8 +243,20 @@
             const el = document.createElement('button');
             el.className = 'bubble';
             el.innerText = listing.price;
+
+            const popupContent = document.createElement('div');
+            popupContent.className = 'popup-content';
+            popupContent.innerHTML = `
+                <img src="${listing.image}" alt="Property Image">
+                <h3>${listing.description}</h3>
+                <p>${listing.price}</p>
+            `;
+
+            const popup = new mapboxgl.Popup({ offset: 25 })
+                .setDOMContent(popupContent);
+
             el.onclick = () => {
-                window.location.href = listing.detailsUrl;
+                popup.addTo(map).setLngLat(listing.coordinates);
             };
 
             new mapboxgl.Marker({ element: el, anchor: 'center' })
