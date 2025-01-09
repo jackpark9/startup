@@ -244,19 +244,17 @@
             el.className = 'bubble';
             el.innerText = listing.price;
 
-            const popupContent = document.createElement('div');
-            popupContent.className = 'popup-content';
-            popupContent.innerHTML = `
-                <img src="${listing.image}" alt="Property Image">
-                <h3>${listing.description}</h3>
-                <p>${listing.price}</p>
-            `;
-
-            const popup = new mapboxgl.Popup({ offset: 25 })
-                .setDOMContent(popupContent);
-
             el.onclick = () => {
-                popup.addTo(map).setLngLat(listing.coordinates);
+                const popup = new mapboxgl.Popup({ offset: 25 })
+                    .setLngLat(listing.coordinates)
+                    .setHTML(`
+                        <div class="popup-content">
+                            <img src="${listing.image}" alt="Property Image">
+                            <h3>${listing.description}</h3>
+                            <p>${listing.price}</p>
+                        </div>
+                    `)
+                    .addTo(map);
             };
 
             new mapboxgl.Marker({ element: el, anchor: 'center' })
