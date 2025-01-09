@@ -235,16 +235,20 @@
                 coordinates: [-123.03553498503831, 49.249016513418916],
                 price: "$2500/month",
                 description: "Cozy Studio in East Vancouver",
-                image: "https://mls-photos.ojo.ca/resizes/r/bc_vbr_vow/7ab/262907050_807fdadd4128661778443947b64f11dc.jpeg"
+                image: "https://via.placeholder.com/300"
             }
         ];
+
+        const popups = [];
 
         listings.forEach(listing => {
             const el = document.createElement('button');
             el.className = 'bubble';
             el.innerText = listing.price;
 
-            el.onclick = () => {
+            el.addEventListener('click', () => {
+                popups.forEach(popup => popup.remove()); // Close existing popups
+
                 const popup = new mapboxgl.Popup({ offset: 25 })
                     .setLngLat(listing.coordinates)
                     .setHTML(`
@@ -255,7 +259,9 @@
                         </div>
                     `)
                     .addTo(map);
-            };
+
+                popups.push(popup);
+            });
 
             new mapboxgl.Marker({ element: el, anchor: 'center' })
                 .setLngLat(listing.coordinates)
